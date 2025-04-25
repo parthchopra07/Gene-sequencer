@@ -1,0 +1,180 @@
+Blast4-request ::= {
+  body queue-search {
+    program "blastn",
+    service "plain",
+    queries bioseq-set {
+      seq-set {
+        seq {
+          id {
+            local str "Query_7363743"
+          },
+          descr {
+            user {
+              type str "CFastaReader",
+              data {
+                {
+                  label str "DefLine",
+                  data str ">MW716260.1 Homo sapiens isolate 65 BRCA1 (BRCA1)
+ gene, exon 10 and partial cds"
+                }
+              }
+            },
+            molinfo {
+              biomol genomic
+            },
+            title "MW716260.1 Homo sapiens isolate 65 BRCA1 (BRCA1) gene, exon
+ 10 and partial cds"
+          },
+          inst {
+            repr raw,
+            mol dna,
+            length 813,
+            seq-data ncbi4na '1211422111841121412114811114121841214A4181288822
+214142841148811211184212284488288881281148488211181221484112881114118884821182
+281422882211414114111114114141112814111214885114848281181184284114122221114182
+82184881148441411144488884211128411141828481414148142148188821A844812284481284
+188184421282144111481828248812844114C81421282814441144211111214112211181118484
+841482148484214218884111122221144412811882184488488221114181181411184121214114
+428881148182218844412184114881122121482444111211421814111844114111484112884184
+282148188842141181218821144888211142422148218884282848888211182214411184214114
+144118484211218828284222128284448228811141112111482211114821288884118484112111
+144114111182114411141184148281181821142284812141214881181821284214428882284844
+8844821411141811422148841811842211184814818211144144282814488880'H
+          }
+        }
+      }
+    },
+    subject sequences {
+      {
+        id {
+          local str "Query_7363745"
+        },
+        descr {
+          user {
+            type str "CFastaReader",
+            data {
+              {
+                label str "DefLine",
+                data str ">U61268.1 Human breast and ovarian cancer
+ susceptibility (BRCA1) gene, exon 2, partial flanking introns, and partial cds"
+              }
+            }
+          },
+          molinfo {
+            biomol genomic
+          },
+          title "U61268.1 Human breast and ovarian cancer susceptibility
+ (BRCA1) gene, exon 2, partial flanking introns, and partial cds"
+        },
+        inst {
+          repr delta,
+          mol dna,
+          length 1338,
+          ext delta {
+            literal {
+              length 460,
+              seq-data ncbi4na '8242814112224441442441448842148414224141824242
+218842128221422844424121414241412848282111121111211112111121111211111121224428
+448184818414144184441228848441141141448422144118184828444114444144141214418888
+484441444141128811411284418221888424221884141114242114144411481414414248214814
+811214184284224421444184842884144144182214141841414214482128444111448814444244
+441442288418844848844888448248848841888844888818421141111141111211221411121884
+414111428114428122122123'H
+            },
+            literal {
+              length 878,
+              seq-data ncbi2na 'C56B4B475DEC9FDDFDFA202802150AAFA498CEE000F483
+F3BEDC3C400907DC837F0030286FB4F2F7FAFECD3DC017D40DF03F1FCFF00E300E0BED3FCC05FF
+002333333BFF70EEF02F4FA048080E8FCDE77D9BE082C403B4F0E739200DF22ED537AC2D24422E
+CF0FEA3D738F375CE40E0483E17C4C72A080213B72C23CA73EC3E78FF7C1E081FC00CC8038F5FB
+DD4D4779775475DD7FD0440D7BAD6A0212A77B7E3EBDE47AA4A0DCBF23C1E93FE9FF7D49DC0109
+D4D1F80E900C034E8E2962A6BA7C65EC35491FEA2942BACA3462B4A236214D7A504EB80155DD47
+0030'H
+            }
+          }
+        }
+      }
+    },
+    algorithm-options {
+      {
+        name "EvalueThreshold",
+        value cutoff e-value { 1, 10, 1 }
+      },
+      {
+        name "UngappedMode",
+        value boolean FALSE
+      },
+      {
+        name "PercentIdentity",
+        value real { 0, 10, 0 }
+      },
+      {
+        name "HitlistSize",
+        value integer 100
+      },
+      {
+        name "EffectiveSearchSpace",
+        value big-integer 0
+      },
+      {
+        name "DbLength",
+        value big-integer 0
+      },
+      {
+        name "WindowSize",
+        value integer 0
+      },
+      {
+        name "DustFiltering",
+        value boolean FALSE
+      },
+      {
+        name "RepeatFiltering",
+        value boolean FALSE
+      },
+      {
+        name "MaskAtHash",
+        value boolean FALSE
+      },
+      {
+        name "MismatchPenalty",
+        value integer -1
+      },
+      {
+        name "MatchReward",
+        value integer 1
+      },
+      {
+        name "GapOpeningCost",
+        value integer 0
+      },
+      {
+        name "GapExtensionCost",
+        value integer 2
+      },
+      {
+        name "StrandOption",
+        value strand-type both-strands
+      },
+      {
+        name "WordSize",
+        value integer 11
+      }
+    },
+    format-options {
+      {
+        name "Web_JobTitle",
+        value string " MW716260.1 Homo sapiens isolate 65 BRCA1 "
+      },
+      {
+        name "Web_NewWindow",
+        value boolean TRUE
+      },
+      {
+        name "Web_BlastSpecialPage",
+        value string "GlobalAln"
+      }
+    }
+  }
+}
+

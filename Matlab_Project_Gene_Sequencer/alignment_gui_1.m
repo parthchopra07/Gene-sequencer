@@ -1,0 +1,104 @@
+function alignment_gui_1
+    % Create GUI Figure
+    fig = uifigure('Name', 'Sequence Alignment GUI', 'Position', [100, 100, 600, 450]);
+
+    % Buttons for File Selection
+    btn1 = uibutton(fig, 'push', 'Position', [50, 390, 150, 30], 'Text', 'Load Sequence 1', ...
+        'ButtonPushedFcn', @(btn,event) loadFASTA(1));
+    btn2 = uibutton(fig, 'push', 'Position', [230, 390, 150, 30], 'Text', 'Load Sequence 2', ...
+        'ButtonPushedFcn', @(btn,event) loadFASTA(2));
+
+    % Dropdown for Algorithm Selection
+    algDropDown = uidropdown(fig, 'Position', [50, 340, 150, 30], ...
+        'Items', {'Needleman-Wunsch', 'Smith-Waterman'}, 'Value', 'Needleman-Wunsch');
+
+    % Run Alignment Button
+    btnAlign = uibutton(fig, 'push', 'Position', [230, 340, 150, 30], 'Text', 'Run Alignment', ...
+        'ButtonPushedFcn', @(btn,event) runAlignment());
+
+    % Save Results Button
+    btnSave = uibutton(fig, 'push', 'Position', [410, 390, 150, 30], 'Text', 'Save Results', ...
+        'ButtonPushedFcn', @(btn,event) saveResults());
+
+    % Plot Alignment Button
+  %  btnPlot = uibutton(fig, 'push', 'Position', [410, 340, 150, 30], 'Text', 'Visualize Alignment', ...
+    %    'ButtonPushedFcn', @(btn,event) visualizeAlignment());
+
+    % Result Display
+    txtArea = uitextarea(fig, 'Position', [50, 100, 500, 200]);
+
+    % Global Variables
+    global seq1 seq2 aligned1 aligned2 score;
+    seq1 = ''; seq2 = '';
+    aligned1 = ''; aligned2 = ''; score = 0;
+
+    % Function to Load FASTA Files
+    function loadFASTA(index)
+        [file, path] = uigetfile('*.fasta', 'Select a FASTA file');
+        if file ~= 0
+            fullPath = fullfile(path, file);
+            sequence = read_fasta(fullPath);
+            if index == 1
+                seq1 = sequence;
+            else
+                seq2 = sequence;
+            end
+        end
+    end
+
+    % Function to Perform Alignment
+    function runAlignment()
+        if isempty(seq1) || isempty(seq2)
+            txtArea.Value = {'Please load both sequences first!'};
+            return;
+        end
+        algorithm = algDropDown.Value;
+        if strcmp(algorithm, 'Needleman-Wunsch')
+            [score, aligned1, aligned2] = needleman_wunsch(seq1, seq2);
+        else
+            [score, aligned1, aligned2] = smith_waterman(seq1, seq2);
+        end
+        txtArea.Value = {sprintf('Alignment Score: %d', score), aligned1, aligned2};
+    end
+
+    % Function to Save Results
+    function saveResults()
+        if isempty(aligned1) || isempty(aligned2)
+            uialert(fig, 'Run alignment first!', 'Error');
+            return;
+        end
+        [file, path] = uiputfile('alignment_results.txt', 'Save Alignment');
+        if file ~= 0
+            fullPath = fullfile(path, file);
+            fid = fopen(fullPath, 'w');
+            fprintf(fid, 'Alignment Score: %d\n', score);
+            fprintf(fid, 'Sequence 1: %s\n', aligned1);
+            fprintf(fid, 'Sequence 2: %s\n', aligned2);
+            fclose(fid);
+            uialert(fig, 'Results saved successfully!', 'Success');
+        end
+    end
+
+    % Function to Visualize Alignment
+    function visualizeAlignment()
+        if isempty(aligned1) || isempty(aligned2)
+            uialert(fig, 'Run alignment first!', 'Error');
+            return;
+        end
+        figure;
+        hold on;
+        title('Sequence Alignment Visualization');
+        xlim([0, length(aligned1)]);
+        ylim([-1, 1]);
+        xticks(0:length(aligned1));
+        for i = 1:length(aligned1)
+            if aligned1(i) == aligned2(i)
+                text(i, 0, aligned1(i), 'Color', 'g', 'FontSize', 14, 'FontWeight', 'bold');
+            else
+                text(i, 0, aligned1(i), 'Color', 'r', 'FontSize', 14, 'FontWeight', 'bold');
+                text(i, -0.5, aligned2(i), 'Color', 'r', 'FontSize', 14, 'FontWeight', 'bold');
+            end
+        end
+        hold off;
+    end
+end
