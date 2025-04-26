@@ -5,7 +5,7 @@ This MATLAB-based GUI tool performs pairwise genetic sequence alignment using th
 
 ---
 
-## 🔧 Features
+##  Features
 
 -  User-friendly MATLAB GUI
 -  FASTA file input support
