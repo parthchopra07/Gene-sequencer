@@ -7,15 +7,15 @@ This MATLAB-based GUI tool performs pairwise genetic sequence alignment using th
 
 ## 🔧 Features
 
-- ✅ User-friendly MATLAB GUI
-- ✅ FASTA file input support
-- ✅ Global (Needleman-Wunsch) & Local (Smith-Waterman) alignment
-- ✅ Dynamic programming matrix visualization
-- ✅ Alignment score display
+-  User-friendly MATLAB GUI
+-  FASTA file input support
+-  Global (Needleman-Wunsch) & Local (Smith-Waterman) alignment
+-  Dynamic programming matrix visualization
+-  Alignment score display
 
 ---
 
-## 🧬 Algorithms Implemented
+##  Algorithms Implemented
 
 ### 1. Needleman-Wunsch (Global Alignment)
 - Aligns entire sequences
@@ -27,7 +27,7 @@ This MATLAB-based GUI tool performs pairwise genetic sequence alignment using th
 
 ---
 
-## 📁 File Structure
+##  File Structure
 
 - `alignment_gui.m` – Main file to run the GUI
 - `needleman_wunsch.m` – Function implementing global alignment
@@ -38,7 +38,7 @@ This MATLAB-based GUI tool performs pairwise genetic sequence alignment using th
 
 ---
 
-## ▶️ Getting Started
+##  Getting Started
 
 ### Requirements
 - MATLAB R2020 or later
@@ -53,13 +53,13 @@ This MATLAB-based GUI tool performs pairwise genetic sequence alignment using th
 
 ---
 
-## 📜 License
+##  License
 
 This project is open source and free to use under the MIT License.
 
 ---
 
-## ✉️ Contact
+##  Contact
 
 **Parth Chopra**  
 📧 [LinkedIn](https://www.linkedin.com/in/parth-chopra07)  
