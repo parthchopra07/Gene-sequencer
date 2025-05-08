@@ -26,6 +26,22 @@ This MATLAB-based GUI tool performs pairwise genetic sequence alignment using th
 - Ideal for finding conserved regions within larger sequences
 
 ---
+## GUI Screenshots
+![](Figs/Picture1.png)
+***Figure 1*** Output area with aligned sequences
+
+---
+![](Figs/Picture2.png)
+***Figure 2*** Needleman-Wunsch Algorithm output.
+
+---
+![](Figs/Picture3.png)
+***Figure 3*** Smith-Waterman Algorithm output.
+
+---
+![](Figs/Picture4.png)
+***Figure 4*** Choose and save FASTA files with GUI.
+
 
 ##  File Structure
 
@@ -37,6 +53,8 @@ This MATLAB-based GUI tool performs pairwise genetic sequence alignment using th
 - `sample_sequences.fasta` – Sample FASTA input
 
 ---
+![](Figs/Picture5.png)
+***Figure 5*** File Structure
 
 ##  Getting Started
 
